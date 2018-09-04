@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "日志管理";
+}
+@model Domain.DTOModels.LogRecordModels
+@section css{
+
+}
+@section js{
+    <script src="/Content/js/System/log_index.js"></script>
+}
+<form class="layui-form margin_top layui-form-pane" id="queryForm">
+
+    <fieldset class="layui-elem-field">
+        <legend>日志管理搜索项</legend>
+        <div class="layui-field-box">
+
+            <div class="layui-form-item">
+                <!--名称 Start-->
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="LogTitle" id="LogTitle" placeholder="请输入名称" class="layui-input">
+                </div>
+                <!--名称 End-->
+                <!--创建时间 Start-->
+                <label class="layui-form-label">创建时间</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="StartCTime" id="StartCTime" class="layui-input" readonly="readonly">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="EndCTime" id="EndCTime" class="layui-input" readonly="readonly">
+                </div>
+                <!--创建时间 End-->
+                <!--按钮 Start-->
+                <button type="button" class="layui-btn" data-type="reload" id="btnSearch"><i class="layui-icon">&#xe615;</i>查询</button>
+                <button type="reset" class="layui-btn layui-btn-primary"><i class="layui-icon">&#x1002;</i>重置</button>
+                <!--按钮 End-->
+            </div>
+
+        </div>
+    </fieldset>
+</form>
+<div class="layui-btn-group operation">
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="AddData">
+        <i class="layui-icon">&#xe654;</i>添加
+    </button>
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="RemoveData">
+        <i class="layui-icon">&#xe640;</i>删除
+    </button>
+    <!--<button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="ExportData">
+            <i class="layui-icon">&#xe601;</i>导出
+        </button>
+        <button type="button" class="layui-btn layui-btn-primary layui-btn-sm" id="ImportData">
+            <i class="layui-icon">&#xe67c;</i>导入
+        </button>-->
+</div>
+<table class="layui-hide" id="pageData"></table>

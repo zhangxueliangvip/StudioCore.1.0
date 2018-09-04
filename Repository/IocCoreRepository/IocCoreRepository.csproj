@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6ABA6612-9EE2-4632-8030-A0F2E5925AAE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IocCoreRepository</RootNamespace>
+    <AssemblyName>IocCoreRepository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IocRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\BaseModels\BaseModels.csproj">
+      <Project>{967ebd80-17cb-49c8-b03f-ed064d0ed37d}</Project>
+      <Name>BaseModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\DBModels\DBModels.csproj">
+      <Project>{e7a69c9f-1646-4f3b-9b66-98f240d251d3}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\DTOModels\DTOModels.csproj">
+      <Project>{a84856dc-6daf-43a1-b78d-45209c3d7c13}</Project>
+      <Name>DTOModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Domain\QueryModels\QueryModels.csproj">
+      <Project>{b66f0aa9-fe07-4436-83e0-20fdd64160cc}</Project>
+      <Name>QueryModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\AutofacProxy\AutofacProxy.csproj">
+      <Project>{492ce25f-621e-4136-8520-de7a467c4f66}</Project>
+      <Name>AutofacProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Factory\Factory.csproj">
+      <Project>{da8e124e-40e7-4252-831b-8ea1dacd576f}</Project>
+      <Name>Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\Utility\Utility.csproj">
+      <Project>{85dc3d8a-b768-47cd-9e51-4b0c6bee4a8b}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaseRepositorys\BaseRepositorys.csproj">
+      <Project>{a9aa8e32-47b7-474c-a78a-5020b98d4af7}</Project>
+      <Name>BaseRepositorys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IRepositorys\IRepositorys.csproj">
+      <Project>{653cc1a1-f410-4ec9-a085-6a496cc6b772}</Project>
+      <Name>IRepositorys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repositorys\Repositorys.csproj">
+      <Project>{d39ba27e-c6df-4145-b226-709f34900d53}</Project>
+      <Name>Repositorys</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

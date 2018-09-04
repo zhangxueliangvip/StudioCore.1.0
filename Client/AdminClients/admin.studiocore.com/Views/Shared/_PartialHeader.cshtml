@@ -1,0 +1,61 @@
+﻿<div class="layui-header">
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layadmin-flexible" lay-unselect="">
+            <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                <i class="layui-icon layui-icon-spread-left" id="LAY_app_flexible"></i>
+            </a>
+        </li>
+        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <a href="/" title="控制台">
+                <i class="layui-icon layui-icon-website"></i>
+            </a>
+        </li>
+        <li class="layui-nav-item" lay-unselect="">
+            <a href="javascript:void(0);" onclick="window.location.reload();" layadmin-event="refresh" title="刷新">
+                <i class="layui-icon layui-icon-refresh-3"></i>
+            </a>
+        </li>
+        <!-- <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <input type="text" placeholder="搜索..." autocomplete="off" class="layui-input layui-input-search" layadmin-event="serach" lay-action="template/search/keywords=">
+        </li>-->
+    </ul>
+    <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+
+        <li class="layui-nav-item" lay-unselect="">
+            <a lay-href="app/message/" layadmin-event="message">
+                <i class="layui-icon layui-icon-notice"></i>
+
+            </a>
+        </li>
+        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <a href="javascript:;" layadmin-event="theme">
+                <i class="layui-icon layui-icon-theme"></i>
+            </a>
+        </li>
+        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <a href="javascript:;" layadmin-event="note">
+                <i class="layui-icon layui-icon-note"></i>
+            </a>
+        </li>
+        <!--<li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <a href="javascript:;" layadmin-event="fullscreen">
+                <i class="layui-icon layui-icon-screen-full"></i>
+            </a>
+        </li>-->
+        <li class="layui-nav-item" lay-unselect="">
+            <a href="javascript:;"> <cite style="font-size:18px;font-weight:bold;">@admin.studiocore.com.BaseCore.GetUsersInfo.UserName</cite> <span class="layui-nav-more"></span></a>
+            <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                <!--<dd><a lay-href="set/user/info">基本资料</a></dd>-->
+                <dd><a href="javascript:void(0);" onclick="setPwd();">修改密码</a></dd>
+                <dd layadmin-event="logout" style="text-align: center;"><a href="/Users/LoginOff">退出</a></dd>
+            </dl>
+        </li>
+
+        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+            <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+        </li>
+        <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect="">
+            <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+        </li>
+    </ul>
+</div>

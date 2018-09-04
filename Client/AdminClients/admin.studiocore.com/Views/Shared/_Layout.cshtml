@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--css start-->
+    @Html.Partial("_PartialCss")
+    <link href="/Content/lib/layui/css/modules/layer/default/layer.css" rel="stylesheet" />
+    <link href="/Content/lib/layui/css/admin.css" rel="stylesheet" />
+    @RenderSection("css", false)
+    <!--css end-->
+</head>
+<body layadmin-themealias="default" class="layui-layout-body">
+    <div id="LAY_app" class="layadmin-tabspage-none ">
+        <div class="layui-layout layui-layout-admin">
+            <!--header start-->
+            @Html.Partial("_PartialHeader")
+            <!--header end-->
+            <!--side start-->
+            @Html.Partial("_PartialSide")
+            <!--side end-->
+            <!--Content start-->
+            <div class="layui-body" id="LAY_app_body">
+                <div class="layadmin-tabsbody-item layui-show">
+                    <div class="layui-fluid" id="LAY-component-nav">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <!--Content end-->
+        </div>
+    </div>
+    <!--js start-->
+    @Html.Partial("_PartialJs")
+    <script src="/Content/lib/system/layout.js"></script>
+    @RenderSection("js", false)
+    <!--js end-->
+</body>
+</html>

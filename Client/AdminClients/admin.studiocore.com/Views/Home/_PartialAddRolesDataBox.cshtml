@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+@model Domain.DTOModels.RolesModels
+@section js{
+    <script src="/Content/js/System/roles_add.js"></script>
+}
+<form class="layui-form margin_top layui-form-pane" method="post" action="/Home/AddDataRoles">
+    <div class="layui-field-box">
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="RoleTitle" id="RoleTitle" placeholder="请输入名称" class="layui-input" value="@Model.RoleTitle">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">父级</label>
+            <div class="layui-input-block">
+                <select name="ParentLevel" id="ParentLevel">
+                    @foreach (var item in Model.GetParentLevelID)
+                    {
+                        if (Model.ParentLevel == Convert.ToInt32(item.Split('_')[0]))
+                        {
+                            <option selected="selected" value="@Convert.ToInt32(item.Split('_')[0])">@item</option>
+                        }
+                        else
+                        {
+                            <option value="@Convert.ToInt32(item.Split('_')[0])">@item</option>
+                        }
+                    }
+
+                </select>
+
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top:10%;">
+            <div class="layui-input-block margin_left_30" style="text-align:center;margin-left:0;">
+                <button type="button" class="layui-btn" lay-submit lay-filter="sub" id="btn_sub">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>

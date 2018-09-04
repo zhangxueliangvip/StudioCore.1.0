@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WCFPlugin.AdminServicesPlugin.LoginPlugin" CodeBehind="LoginPlugin.svc.cs" %>

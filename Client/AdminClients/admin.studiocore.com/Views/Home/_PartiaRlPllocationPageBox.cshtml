@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+@model Domain.DTOModels.RolesModels
+@section js{
+    <script src="/Content/js/System/Role_Pllocation.js"></script>
+}
+@section css{
+    <style>
+        .layui-input-block {
+            margin-left: 0;
+        }
+    </style>
+}
+<div class="layui-container">
+    <form class="layui-form">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend><button type="button" class="layui-btn layui-btn-xs" id="btn_submit">保存</button></legend>
+        </fieldset>
+        @foreach (var item in Model.GetPagesList)
+        {
+            <div class="layui-collapse pagesid" lay-accordion="">
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title"><input type="checkbox" name="Title" lay-filter="Title" value="@item.OpenId" lay-skin="primary" title="@item.PageTitle" @(Model.IsPageCheck(Model.OpenId, item.OpenId)) /></h2>
+                    <div class="layui-colla-content">
+                        @if (item.GetChildList.Count > 0)
+                        {
+                            foreach (var childItem in item.GetChildList)
+                            {
+                                <div class="layui-collapse" lay-accordion="">
+                                    <div class="layui-colla-item">
+                                        <h2 class="layui-colla-title"><input type="checkbox" name="childTitle" lay-filter="Title" value="@childItem.OpenId" lay-skin="primary" title="@childItem.PageTitle" @(Model.IsPageCheck(Model.OpenId, childItem.OpenId)) /></h2>
+                                        <div class="layui-colla-content">
+
+                                            @for (int i = 0; i < childItem.GetOperations.Count; i++)
+                                            {
+                                                if (i % 6 == 0)
+                                                {
+                                                    <div class="layui-input-block">
+                                                        @foreach (var operationitem in childItem.GetOperations.Skip(i).Take(6))
+                                                        {
+                                                            <input type="checkbox" name="OperationType" lay-filter="OperationType" value="@operationitem.OpenId" lay-skin="primary" title="@operationitem.OperationTitle" @(Model.IsOperationCheck(Model.OpenId,childItem.OpenId, operationitem.OpenId)) />
+                                                        }
+                                                    </div>
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </form>
+</div>

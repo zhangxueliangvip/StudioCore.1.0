@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/Content/css/system/layout_login.min.css" rel="stylesheet" />
+    @Html.Partial("_PartialCss")
+    @RenderSection("css", false)
+
+</head>
+<body>
+    <div class="main">
+        <div class="log-left">
+            <div class="log-left-title">
+                <p><i class="layui-icon">&#xe62c;</i>StudioCore</p>
+            </div>
+            <div class="log-left-content">
+                <p>微小看品质，领域创未来！——沃镃基·硕德</p>
+                <ul>
+                    <li><i class="layui-icon">&#xe605;</i>本系统开发环境使用的是Asp.net。</li>
+                    <li><i class="layui-icon">&#xe605;</i>本系统采用前后端分离开发模式。</li>
+                    <li><i class="layui-icon">&#xe605;</i>本系统交互通过API实现。</li>
+                    <li><i class="layui-icon">&#xe605;</i>本系统数据库选择的是MySql。</li>
+                    <li><i class="layui-icon">&#xe605;</i>本系统前端为独立站点，使用LayUI为前端框架。</li>
+                    <li><i class="layui-icon">&#xe605;</i>本系统服务端为独立站点，使用DDD(领域式驱动设计)为后端框架。</li>
+                </ul>
+                <div class="log-left-btn">
+                    <a href="/Home/Index" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe62e;</i>返回官网</a>
+                    <a href="/Member/ContactUs" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe606;</i>联系我们</a>
+                    <a href="/Member/ProductIntroduce" class="layui-btn layui-btn-normal"><i class="layui-icon">&#xe612;</i>产品介绍</a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="log-right">
+            <div class="log-right-title">
+                <p>后台管理系统</p>
+                <p>欢迎使用</p>
+            </div>
+            <div class="log-right-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_PartialJs")
+    @RenderSection("js", false)
+</body>
+</html>

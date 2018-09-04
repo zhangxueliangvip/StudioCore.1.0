@@ -1,0 +1,31 @@
+﻿@{
+    var result = admin.studiocore.com.BaseCore.GetPageList;
+}
+<div class="layui-side layui-side-menu">
+    <div class="layui-side-scroll">
+        <div class="layui-logo" lay-href=""> <span>@(Infrastructure.Utility.Config.SysName + Infrastructure.Utility.Config.SysPostfix)</span> </div>
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+            @foreach (var item in result)
+            {
+                if (item.GetChildList.Count > 0)
+                {
+                    <li data-namedata-jump class="layui-nav-item layui-nav-itemed">
+                        <!--layui-nav-itemed-->
+                        <a href="javascript:;" lay-tips="@item.PageTitle" lay-direction="2"> <i class="layui-icon @item.GetIconClass"></i> <cite>@item.PageTitle</cite> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            @foreach (var childItem in item.GetChildList)
+                            {
+                                <dd> <a href="@childItem.PagePathUrl">@childItem.PageTitle</a></dd>
+                            }
+                        </dl>
+                    </li>
+
+                }
+            }
+
+
+        </ul>
+
+
+    </div>
+</div>

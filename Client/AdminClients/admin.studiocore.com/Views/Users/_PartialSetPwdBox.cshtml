@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+}
+@section js{
+    <script src="/Content/js/System/users_setpwd.js"></script>
+}
+<form class="layui-form margin_top layui-form-pane" method="post" action="/Users/UpPwd">
+    <div class="layui-field-box">
+        <div class="layui-form-item">
+            <label class="layui-form-label">旧密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="UserPwd" id="UserPwd" placeholder="请输入旧密码" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">新密码</label>
+            <div class="layui-input-block">
+                <input type="password" name="NewUserPwd" id="NewUserPwd" placeholder="请输入密码" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="margin-top:10%;">
+            <div class="layui-input-block margin_left_30" style="text-align:center;margin-left:0;">
+                <button type="button" class="layui-btn" lay-submit lay-filter="sub" id="btn_sub">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+
+    </div>
+
+</form>

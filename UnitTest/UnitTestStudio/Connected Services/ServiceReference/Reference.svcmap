@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d3d4d56d-7715-4027-adea-b491f0f13e71" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LoginPlugin.xsd" MetadataType="Schema" ID="43d49eb7-d6f6-433a-bf80-f2e841499a7b" SourceId="1" SourceUrl="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc?xsd=xsd1" />
+    <MetadataFile FileName="LoginPlugin.wsdl" MetadataType="Wsdl" ID="a39e0038-b051-434b-9c98-285ff505835c" SourceId="1" SourceUrl="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="LoginPlugin1.xsd" MetadataType="Schema" ID="a4515e87-b912-476a-bded-71a413cadf98" SourceId="1" SourceUrl="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc?xsd=xsd0" />
+    <MetadataFile FileName="LoginPlugin.disco" MetadataType="Disco" ID="dd5c8e65-cfda-4405-969b-fbbaa7b71fe1" SourceId="1" SourceUrl="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc?disco" />
+    <MetadataFile FileName="LoginPlugin1.wsdl" MetadataType="Wsdl" ID="bc33b9d7-3b35-443d-a5d1-2c3a9bf781ec" SourceId="1" SourceUrl="http://localhost:6393/AdminServicesPlugin/LoginPlugin.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

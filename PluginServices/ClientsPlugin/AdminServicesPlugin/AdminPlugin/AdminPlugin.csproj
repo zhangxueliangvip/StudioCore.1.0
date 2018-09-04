@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18432278-9225-4A16-AB8C-E89D2CE748CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientsPlugin.AdminServicesPlugin</RootNamespace>
+    <AssemblyName>AdminPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.8.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\MySql.Data.6.8.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddDataUsersPlugin.cs" />
+    <Compile Include="DeleteDataUsersPlugin.cs" />
+    <Compile Include="GetPageDataUsersPlugin.cs" />
+    <Compile Include="UpPwdPlugin.cs" />
+    <Compile Include="AddDataIconsPlugin.cs" />
+    <Compile Include="AddDataOperationsPlugin.cs" />
+    <Compile Include="AddDataPagesPlugin.cs" />
+    <Compile Include="DeleteDataIconsPlugin.cs" />
+    <Compile Include="DeleteDataOperationsPlugin.cs" />
+    <Compile Include="DeleteDataPagesPlugin.cs" />
+    <Compile Include="GetIconsInfoPlugin.cs" />
+    <Compile Include="GetOperationsInfoPlugin.cs" />
+    <Compile Include="GetPageDataIconsPlugin.cs" />
+    <Compile Include="GetPageDataLogsPlugin.cs" />
+    <Compile Include="GetPageDataOperationsPlugin.cs" />
+    <Compile Include="GetPageDataPagesPlugin.cs" />
+    <Compile Include="GetPagesInfoPlugin.cs" />
+    <Compile Include="SetPllocationUsersCheckPlugin.cs" />
+    <Compile Include="SetPllocationRolesCheckPlugin.cs" />
+    <Compile Include="DeleteDataRolesPlugin.cs" />
+    <Compile Include="GetPageDataRolesPlugin.cs" />
+    <Compile Include="AddDataRolesPlugin.cs" />
+    <Compile Include="GetUsersInfoPlugin.cs" />
+    <Compile Include="GetRolesInfoPlugin.cs" />
+    <Compile Include="GetUsersMenuPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LoginPlugin.cs" />
+    <Compile Include="VerificationCodePlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Domain\BaseModels\BaseModels.csproj">
+      <Project>{967ebd80-17cb-49c8-b03f-ed064d0ed37d}</Project>
+      <Name>BaseModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Domain\DBModels\DBModels.csproj">
+      <Project>{e7a69c9f-1646-4f3b-9b66-98f240d251d3}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Domain\DTOModels\DTOModels.csproj">
+      <Project>{a84856dc-6daf-43a1-b78d-45209c3d7c13}</Project>
+      <Name>DTOModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Domain\QueryModels\QueryModels.csproj">
+      <Project>{b66f0aa9-fe07-4436-83e0-20fdd64160cc}</Project>
+      <Name>QueryModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Infrastructure\Utility\Utility.csproj">
+      <Project>{85dc3d8a-b768-47cd-9e51-4b0c6bee4a8b}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Manager\AdminManager\AdminManager.csproj">
+      <Project>{5b5d0f64-3625-40c1-85f5-8e42a6e954ad}</Project>
+      <Name>AdminManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BasePlugin\BasePlugin.csproj">
+      <Project>{6dbfd0c9-ffe5-45b8-b7e0-cb792b479436}</Project>
+      <Name>BasePlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IAdminPlugin\IAdminPlugin.csproj">
+      <Project>{b646a977-cc46-4662-941c-0d821b9ff17a}</Project>
+      <Name>IAdminPlugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
