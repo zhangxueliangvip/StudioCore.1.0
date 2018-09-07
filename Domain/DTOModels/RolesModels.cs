@@ -11,7 +11,7 @@ namespace Domain.DTOModels
 
         #region Business
         [SugarColumn(IsIgnore = true)]
-        public List<PagesModels> GetPagesList => DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesModels>();
+        public List<PagesQueryItem> GetPagesList => DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesQueryItem>();
 
         [SugarColumn(IsIgnore = true)]
         List<sy_roles> GetRolesLists => DBCore.Queryable<sy_roles>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<sy_roles>();

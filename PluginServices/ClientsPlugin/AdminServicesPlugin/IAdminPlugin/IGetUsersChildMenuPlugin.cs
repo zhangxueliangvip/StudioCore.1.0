@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace ClientsPlugin.AdminServicesPlugin
 {
-   public interface IGetUsersMenuPlugin
+   public interface IGetUsersChildMenuPlugin
     {
         /// <summary>
-        /// 获取用户的菜单列表
+        /// 获取用户的子菜单列表
         /// </summary>
         /// <param name="userOpenId"></param>
         /// <returns></returns>
-        TBaseResult<PagesQueryItem> GetUsersMenuList(string safetySecretKey, bool isUsable,string userOpenId = "");
+        TBaseResult<PagesQueryItem> GetUsersChildMenuList(string safetySecretKey, bool isUsable,int id);
     }
 }

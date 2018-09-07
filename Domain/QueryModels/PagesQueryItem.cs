@@ -63,5 +63,21 @@ namespace Domain.QueryModels
                 return string.Format("<span class=\"layui-badge layui-bg-blue\">前台</span>");
             }
         }
+
+
+        [SugarColumn(IsIgnore = true)]
+        public string GetIconClass
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(OpenId) && PageIcon <= 0)
+                {
+                    return "layui-icon-home";
+                }
+
+                var entity = DBCore.Queryable<sy_icons>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ID == this.PageIcon).First() ?? new sy_icons();
+                return entity.IconClass;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<LogRecordModels> list)
+        public int InsertList(List<LogRecordQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<LogRecordModels> list)
+        public int UpdateList(List<LogRecordQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<LogRecordModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<LogRecordModels> list)
+        public int DeleteList(List<LogRecordQueryItem> list)
         {
-            return DBCore.Deleteable<LogRecordModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<LogRecordQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<LogRecordModels>().With(SqlWith.NoLock).InSingle(id) ?? new LogRecordModels();
         }
 
-        public List<LogRecordModels> GetAll()
+        public List<LogRecordQueryItem> GetAll()
         {
-            return DBCore.Queryable<LogRecordModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<LogRecordModels>();
+            return DBCore.Queryable<LogRecordQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<LogRecordQueryItem>();
         }
 
 

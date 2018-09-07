@@ -19,6 +19,7 @@ namespace IocCorePlugin
         public static IVerificationCodePlugin IocVerificationCodePlugin => IocCore.Container.Resolve<IVerificationCodePlugin>();
         public static IUpPwdPlugin IocUpPwdPlugin => IocCore.Container.Resolve<IUpPwdPlugin>();
         public static IGetUsersMenuPlugin IocGetUsersMenuPlugin => IocCore.Container.Resolve<IGetUsersMenuPlugin>();
+        public static IGetUsersChildMenuPlugin IocGetUsersChildMenuPlugin => IocCore.Container.Resolve<IGetUsersChildMenuPlugin>();
 
 
 

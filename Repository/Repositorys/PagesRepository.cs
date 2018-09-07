@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<PagesModels> list)
+        public int InsertList(List<PagesQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<PagesModels> list)
+        public int UpdateList(List<PagesQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<PagesModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<PagesModels> list)
+        public int DeleteList(List<PagesQueryItem> list)
         {
-            return DBCore.Deleteable<PagesModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<PagesQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -73,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<PagesModels> GetTopList(int num)
+        public List<PagesQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<PagesModels>();
+            return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<PagesQueryItem>();
         }
 
         public PagesModels GetById(int id)
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).InSingle(id) ?? new PagesModels();
         }
 
-        public List<PagesModels> GetAll()
+        public List<PagesQueryItem> GetAll()
         {
-            return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<PagesModels>();
+            return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<PagesQueryItem>();
         }
 
 
@@ -97,11 +98,14 @@ namespace Repositorys
         #endregion
 
         #region Business
-        public List<PagesModels> GetPagesAll()
+        public List<PagesQueryItem> GetPagesAll()
         {
-            return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesModels>();
+            return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesQueryItem>();
         }
-
+        public List<PagesQueryItem> GetPagesChildList(int id)
+        {
+            return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == id&&m.ParentLevel!=0).OrderBy(o => o.PageSort).ToList() ?? new List<PagesQueryItem>();
+        }
         public void AddPagesOperations(sy_pagesoperations entity)
         {
             entity.CTime = DateTime.Now;

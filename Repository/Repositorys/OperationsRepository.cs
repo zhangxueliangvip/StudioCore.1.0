@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<OperationsModels> list)
+        public int InsertList(List<OperationsQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<OperationsModels> list)
+        public int UpdateList(List<OperationsQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<OperationsModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<OperationsModels> list)
+        public int DeleteList(List<OperationsQueryItem> list)
         {
-            return DBCore.Deleteable<OperationsModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<OperationsQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -73,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<OperationsModels> GetTopList(int num)
+        public List<OperationsQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<OperationsModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<OperationsModels>();
+            return DBCore.Queryable<OperationsQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<OperationsQueryItem>();
         }
 
         public OperationsModels GetById(int id)
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<OperationsModels>().With(SqlWith.NoLock).InSingle(id) ?? new OperationsModels();
         }
 
-        public List<OperationsModels> GetAll()
+        public List<OperationsQueryItem> GetAll()
         {
-            return DBCore.Queryable<OperationsModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<OperationsModels>();
+            return DBCore.Queryable<OperationsQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<OperationsQueryItem>();
         }
 
 

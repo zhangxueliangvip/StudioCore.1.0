@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<IconModels> list)
+        public int InsertList(List<IconQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<IconModels> list)
+        public int UpdateList(List<IconQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<IconModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<IconModels> list)
+        public int DeleteList(List<IconQueryItem> list)
         {
-            return DBCore.Deleteable<IconModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<IconQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -73,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<IconModels> GetTopList(int num)
+        public List<IconQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<IconModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<IconModels>();
+            return DBCore.Queryable<IconQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<IconQueryItem>();
         }
 
         public IconModels GetById(int id)
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<IconModels>().With(SqlWith.NoLock).InSingle(id) ?? new IconModels();
         }
 
-        public List<IconModels> GetAll()
+        public List<IconQueryItem> GetAll()
         {
-            return DBCore.Queryable<IconModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<IconModels>();
+            return DBCore.Queryable<IconQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<IconQueryItem>();
         }
 
 

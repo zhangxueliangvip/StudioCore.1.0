@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<RolesModels> list)
+        public int InsertList(List<RolesQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<RolesModels> list)
+        public int UpdateList(List<RolesQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<RolesModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<RolesModels> list)
+        public int DeleteList(List<RolesQueryItem> list)
         {
-            return DBCore.Deleteable<RolesModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<RolesQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -73,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<RolesModels> GetTopList(int num)
+        public List<RolesQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<RolesModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<RolesModels>();
+            return DBCore.Queryable<RolesQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<RolesQueryItem>();
         }
 
         public RolesModels GetById(int id)
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<RolesModels>().With(SqlWith.NoLock).InSingle(id) ?? new RolesModels();
         }
 
-        public List<RolesModels> GetAll()
+        public List<RolesQueryItem> GetAll()
         {
-            return DBCore.Queryable<RolesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<RolesModels>();
+            return DBCore.Queryable<RolesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<RolesQueryItem>();
         }
 
 

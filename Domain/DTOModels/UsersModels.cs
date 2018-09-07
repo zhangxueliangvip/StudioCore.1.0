@@ -12,7 +12,7 @@ namespace Domain.DTOModels
 
 
         [SugarColumn(IsIgnore = true)]
-        public List<RolesModels> GetRolesList => DBCore.Queryable<RolesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<RolesModels>();
+        public List<RolesQueryItem> GetRolesList => DBCore.Queryable<RolesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<RolesQueryItem>();
 
         public string IsRoleCheck(string userOpenId, string roleOpenId)
         {
@@ -20,7 +20,7 @@ namespace Domain.DTOModels
             return list.Count > 0 ? "checked=\"checked\"" : string.Empty;
         }
         [SugarColumn(IsIgnore = true)]
-        public List<PagesModels> GetPagesList => DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesModels>();
+        public List<PagesQueryItem> GetPagesList => DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == 0).ToList() ?? new List<PagesQueryItem>();
         public string IsPageCheck(string usersOpenId, string pageOpenId)
         {
             var list = DBCore.Queryable<sy_userspages>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.UsersOpenId == usersOpenId && m.PagesOpenId == pageOpenId).ToList() ?? new List<sy_userspages>();
@@ -33,31 +33,31 @@ namespace Domain.DTOModels
         }
         [SugarColumn(IsIgnore = true)]
 
-        public List<PagesModels> GetMenu
+        public List<PagesQueryItem> GetMenu
         {
             get
             {
                 if (string.IsNullOrWhiteSpace(this.OpenId))
                 {
-                    return new List<PagesModels>();
+                    return new List<PagesQueryItem>();
                 }
                 if (this.IsAdministrator)
                 {
-                    return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false&&m.ParentLevel==0).ToList() ?? new List<PagesModels>();
+                    return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false&&m.ParentLevel==0).ToList() ?? new List<PagesQueryItem>();
                 }
                 return GetOnlyMenu(this.OpenId);
             }
         }
 
-        private List<PagesModels> GetOnlyMenu(string userOpenId)
+        private List<PagesQueryItem> GetOnlyMenu(string userOpenId)
         {
-            var list = new List<PagesModels>();
+            var list = new List<PagesQueryItem>();
             var userPageList = DBCore.Queryable<sy_userspages>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.UsersOpenId == userOpenId).ToList() ?? new List<sy_userspages>();
             if (userPageList.Count > 0)
             {
                 foreach (var item in userPageList)
                 {
-                    var tempEntity= DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == item.PagesOpenId).First()?? new PagesModels();
+                    var tempEntity= DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == item.PagesOpenId).First()?? new PagesQueryItem();
                     if (!string.IsNullOrWhiteSpace(tempEntity.OpenId)&&!list.Contains(tempEntity))
                     {
                         list.Add(tempEntity);
@@ -70,7 +70,7 @@ namespace Domain.DTOModels
             {
                 foreach (var item in userRoleList)
                 {
-                    var tempEntity = DBCore.Queryable<RolesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == item.RolesOpenId).First() ?? new RolesModels();
+                    var tempEntity = DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == item.RolesOpenId).First() ?? new PagesQueryItem();
                     if (!string.IsNullOrWhiteSpace(tempEntity.OpenId))
                     {
                         var rolesPagesList= DBCore.Queryable<sy_rolespages>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.RolesOpenId == item.RolesOpenId).ToList() ??new List<sy_rolespages>();
@@ -79,7 +79,7 @@ namespace Domain.DTOModels
                         {
                             foreach (var items in rolesPagesList)
                             {
-                                var temEntity = DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == items.PagesOpenId).First() ?? new PagesModels();
+                                var temEntity = DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.OpenId == items.PagesOpenId).First() ?? new PagesQueryItem();
                                 if (!string.IsNullOrWhiteSpace(temEntity.OpenId) && !list.Contains(temEntity))
                                 {
                                     list.Add(temEntity);

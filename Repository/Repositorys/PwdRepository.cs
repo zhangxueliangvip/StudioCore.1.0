@@ -1,6 +1,7 @@
 ﻿using BaseRepositorys;
 using Domain.DTOModels;
 using Domain.Models;
+using Domain.QueryModels;
 using IRepositorys;
 using SqlSugar;
 using System;
@@ -34,7 +35,7 @@ namespace Repositorys
         {
             return DBCore.Insertable(entity).With(SqlWith.UpdLock).ExecuteCommandIdentityIntoEntity();
         }
-        public int InsertList(List<PwdModels> list)
+        public int InsertList(List<PwdQueryItem> list)
         {
             return DBCore.Insertable(list.ToArray()).With(SqlWith.UpdLock).ExecuteCommand();
         }
@@ -45,7 +46,7 @@ namespace Repositorys
         {
             return DBCore.Updateable(entity).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
-        public int UpdateList(List<PwdModels> list)
+        public int UpdateList(List<PwdQueryItem> list)
         {
             return DBCore.Updateable(list).With(SqlWith.UpdLock).Where(true).ExecuteCommand();
         }
@@ -60,9 +61,9 @@ namespace Repositorys
         {
             return DBCore.Deleteable<PwdModels>().With(SqlWith.RowLock).In(id).ExecuteCommand();
         }
-        public int DeleteList(List<PwdModels> list)
+        public int DeleteList(List<PwdQueryItem> list)
         {
-            return DBCore.Deleteable<PwdModels>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
+            return DBCore.Deleteable<PwdQueryItem>().With(SqlWith.RowLock).Where(list).ExecuteCommand();
         }
         public int DeleteListByIds(List<int> ids)
         {
@@ -83,9 +84,9 @@ namespace Repositorys
             return DBCore.Queryable<PwdModels>().With(SqlWith.NoLock).InSingle(id) ?? new PwdModels();
         }
 
-        public List<PwdModels> GetAll()
+        public List<PwdQueryItem> GetAll()
         {
-            return DBCore.Queryable<PwdModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<PwdModels>();
+            return DBCore.Queryable<PwdQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<PwdQueryItem>();
         }
 
 

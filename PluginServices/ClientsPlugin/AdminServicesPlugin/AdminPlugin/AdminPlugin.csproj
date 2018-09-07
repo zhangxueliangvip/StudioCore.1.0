@@ -46,6 +46,7 @@
     <Compile Include="AddDataUsersPlugin.cs" />
     <Compile Include="DeleteDataUsersPlugin.cs" />
     <Compile Include="GetPageDataUsersPlugin.cs" />
+    <Compile Include="GetUsersChildMenuPlugin.cs" />
     <Compile Include="UpPwdPlugin.cs" />
     <Compile Include="AddDataIconsPlugin.cs" />
     <Compile Include="AddDataOperationsPlugin.cs" />

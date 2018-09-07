@@ -13,15 +13,15 @@ namespace Domain.DTOModels
         #region Business
 
         [SugarColumn(IsIgnore = true)]
-        public List<PagesModels> GetChildList
+        public List<PagesQueryItem> GetChildList
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(this.OpenId) || this.ParentLevel != 0)
+                if (string.IsNullOrWhiteSpace(this.OpenId) || this.ParentLevel == 0)
                 {
-                    return new List<PagesModels>();
+                    return new List<PagesQueryItem>();
                 }
-                return DBCore.Queryable<PagesModels>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == this.ID).OrderBy(o => o.PageSort).ToList() ?? new List<PagesModels>();
+                return DBCore.Queryable<PagesQueryItem>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ParentLevel == this.ID).OrderBy(o => o.PageSort).ToList() ?? new List<PagesQueryItem>();
             }
         }
         [SugarColumn(IsIgnore = true)]
@@ -37,20 +37,7 @@ namespace Domain.DTOModels
             }
         }
 
-        [SugarColumn(IsIgnore = true)]
-        public string GetIconClass
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(OpenId) && PageIcon <= 0)
-                {
-                    return "layui-icon-home";
-                }
-
-                var entity = DBCore.Queryable<sy_icons>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false && m.ID == this.PageIcon).First() ?? new sy_icons();
-                return entity.IconClass;
-            }
-        }
+       
 
         [SugarColumn(IsIgnore = true)]
         List<sy_icons> GetIconLists => DBCore.Queryable<sy_icons>().With(SqlWith.NoLock).Where(m => m.IsDeleted == false).ToList() ?? new List<sy_icons>();

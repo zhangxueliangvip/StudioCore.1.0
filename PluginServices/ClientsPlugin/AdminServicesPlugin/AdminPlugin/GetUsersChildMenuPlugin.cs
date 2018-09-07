@@ -11,9 +11,9 @@ using Infrastructure.Utility;
 
 namespace ClientsPlugin.AdminServicesPlugin
 {
-    public class GetUsersMenuPlugin : BasePluginCore, IGetUsersMenuPlugin
+    public class GetUsersChildMenuPlugin : BasePluginCore, IGetUsersChildMenuPlugin
     {
-        public TBaseResult<PagesQueryItem> GetUsersMenuList(string safetySecretKey, bool isUsable,string userOpenId = "")
+        public TBaseResult<PagesQueryItem> GetUsersChildMenuList(string safetySecretKey, bool isUsable, int id)
         {
             this.SafetySecretKey = safetySecretKey;
             this.Usable = isUsable ? BasePluginType.Type.启用 : BasePluginType.Type.卸载;
@@ -27,7 +27,7 @@ namespace ClientsPlugin.AdminServicesPlugin
             {
                 return result;
             }
-            var list = MenuManager.GetInstance.GetUsersMenuList(userOpenId);
+            var list = MenuManager.GetInstance.GetPagesChildList(id);
             result.Code = (int)EnumCore.CodeType.成功;
             result.TList = list;
             if (list.Count <= 0)
@@ -38,5 +38,6 @@ namespace ClientsPlugin.AdminServicesPlugin
             result.Message = "获取成功";
             return result;
         }
+
     }
 }

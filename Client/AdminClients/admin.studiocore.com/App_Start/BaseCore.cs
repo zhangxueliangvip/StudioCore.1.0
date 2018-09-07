@@ -2,6 +2,7 @@
 using AutofacProxy;
 using ClientsPlugin.AdminServicesPlugin;
 using Domain.DTOModels;
+using Domain.QueryModels;
 using Infrastructure.Utility;
 using IocCorePlugin;
 using System;
@@ -28,7 +29,7 @@ namespace admin.studiocore.com
             }
         }
 
-        public static List<PagesModels> GetPageList
+        public static List<PagesQueryItem> GetPageList
         {
             get
             {
@@ -39,8 +40,18 @@ namespace admin.studiocore.com
                 {
                     return result.TList;
                 }
-                return new List<PagesModels>();
+                return new List<PagesQueryItem>();
             }
+        }
+
+        public static List<PagesQueryItem> GetPageChildList(int id)
+        {
+            var result = IocPlugin.IocGetUsersChildMenuPlugin.GetUsersChildMenuList(PluginCore.GetInstance.SafetySecretValue, true, id);
+            if (result.Code == (int)EnumCore.CodeType.成功)
+            {
+                return result.TList;
+            }
+            return new List<PagesQueryItem>();
         }
     }
 }

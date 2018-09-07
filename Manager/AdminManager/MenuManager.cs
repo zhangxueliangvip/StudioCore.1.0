@@ -369,17 +369,21 @@ namespace AdminManager
         /// 获取用户菜单集合
         /// </summary>
         /// <returns></returns>
-        public List<PagesModels> GetUsersMenuList(string userOpenId = "")
+        public List<PagesQueryItem> GetUsersMenuList(string userOpenId = "")
         {
             
             var userEntity = IocRepository.IocUsersRepository.GetByOpenId(userOpenId);
             if (string.IsNullOrWhiteSpace(userEntity.OpenId))
             {
-                return new List<PagesModels>();
+                return new List<PagesQueryItem>();
             }
             return userEntity.GetMenu;
         }
+        public List<PagesQueryItem> GetPagesChildList(int id)
+        {
 
+            return IocRepository.IocPagesRepository.GetPagesChildList(id);
+        }
 
         #endregion
 
