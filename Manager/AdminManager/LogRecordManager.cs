@@ -25,32 +25,26 @@ namespace AdminManager
         #endregion
 
         #region 添加管理
-        public bool AddLog(string title, string creater, string contents, string remark = "日志记录")
+        public bool AddLog(LogRecordModels entity)
         {
-            if (string.IsNullOrWhiteSpace(title))
+            if (string.IsNullOrWhiteSpace(entity.LogTitle))
             {
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(creater))
+            if (string.IsNullOrWhiteSpace(entity.Creater))
             {
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(contents))
+            if (string.IsNullOrWhiteSpace(entity.LogContents))
             {
                 return false;
             }
-            var entity = new LogRecordModels
-            {
-                Creater = creater,
-                CTime = DateTime.Now,
-                IsDeleted = false,
-                LogContents = contents,
-                LogTitle = title,
-                OpenId = Guid.NewGuid().ToString(),
-                Remark = remark,
-                Types = (int)EnumCore.LogType.正常,
-                UTime = DateTime.Now
-            };
+            entity.CTime = DateTime.Now;
+            entity.IsDeleted = false;
+            entity.OpenId = Guid.NewGuid().ToString();
+            entity.Types = (int)EnumCore.LogType.正常;
+            entity.UTime = DateTime.Now;
+
             return IocRepository.IocLogRecordRepository.InsertBool(entity);
         }
 

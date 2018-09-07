@@ -16,6 +16,7 @@ namespace admin.studiocore.com
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //注册组件
             IocCore.Instance.Register(new string[] { "Repositorys", "AdminPlugin" });
+            BaseCore.AddLog("系统", "系统启动");
         }
     }
 }

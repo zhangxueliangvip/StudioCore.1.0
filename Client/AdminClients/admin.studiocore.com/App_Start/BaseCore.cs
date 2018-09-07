@@ -14,13 +14,14 @@ namespace admin.studiocore.com
 {
     public class BaseCore
     {
+        #region 用户信息
         public static UsersModels GetUsersInfo
         {
             get
             {
                 var obj = RedisCore.GetInstance.Get(Config.SessionUserInfo);
                 var userOpenId = obj == null || obj.ToString() == "null" ? string.Empty : obj.ToString();
-               var result= IocPlugin.IocGetUsersInfoPlugin.GetUsersInfo(PluginCore.GetInstance.SafetySecretValue, true, userOpenId);
+                var result = IocPlugin.IocGetUsersInfoPlugin.GetUsersInfo(PluginCore.GetInstance.SafetySecretValue, true, userOpenId);
                 if (result.Code == (int)EnumCore.CodeType.成功)
                 {
                     return result.TData;
@@ -28,7 +29,9 @@ namespace admin.studiocore.com
                 return new UsersModels();
             }
         }
+        #endregion
 
+        #region 菜单
         public static List<PagesQueryItem> GetPageList
         {
             get
@@ -53,5 +56,23 @@ namespace admin.studiocore.com
             }
             return new List<PagesQueryItem>();
         }
+        #endregion
+
+        #region 日志
+        public static void AddLog(string title,string content,string creater="127.0.0.1",string remark="日志记录")
+        {
+            var entity = new LogRecordModels() {
+                LogTitle=title,
+                LogContents=content,
+                Creater=creater,
+                Remark=remark
+            };
+            IocPlugin.IocAddDataLogRecordPlugin.AddDataLogRecord(entity);
+        }
+        #endregion
+
+        #region 配置
+
+        #endregion
     }
 }

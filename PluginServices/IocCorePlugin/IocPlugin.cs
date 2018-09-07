@@ -28,6 +28,7 @@ namespace IocCorePlugin
         public static IAddDataIconsPlugin IocAddDataIconsPlugin => IocCore.Container.Resolve<IAddDataIconsPlugin>();
         public static IAddDataOperationsPlugin IocAddDataOperationsPlugin => IocCore.Container.Resolve<IAddDataOperationsPlugin>();
         public static IAddDataUsersPlugin IocAddDataUsersPlugin => IocCore.Container.Resolve<IAddDataUsersPlugin>();
+        public static IAddDataLogRecordPlugin IocAddDataLogRecordPlugin => IocCore.Container.Resolve<IAddDataLogRecordPlugin>();
 
 
 

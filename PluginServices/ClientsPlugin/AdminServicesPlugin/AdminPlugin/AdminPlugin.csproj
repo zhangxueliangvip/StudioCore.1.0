@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDataLogRecordPlugin.cs" />
     <Compile Include="AddDataUsersPlugin.cs" />
     <Compile Include="DeleteDataUsersPlugin.cs" />
     <Compile Include="GetPageDataUsersPlugin.cs" />
