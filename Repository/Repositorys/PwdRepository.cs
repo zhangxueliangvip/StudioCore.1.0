@@ -74,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<PwdModels> GetTopList(int num)
+        public List<PwdQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<PwdModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<PwdModels>();
+            return DBCore.Queryable<PwdQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<PwdQueryItem>();
         }
 
         public PwdModels GetById(int id)

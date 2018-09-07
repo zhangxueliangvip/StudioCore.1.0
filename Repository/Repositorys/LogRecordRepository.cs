@@ -74,9 +74,9 @@ namespace Repositorys
         #endregion
 
         #region 查询
-        public List<LogRecordModels> GetTopList(int num)
+        public List<LogRecordQueryItem> GetTopList(int num)
         {
-            return DBCore.Queryable<LogRecordModels>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<LogRecordModels>();
+            return DBCore.Queryable<LogRecordQueryItem>().With(SqlWith.NoLock).Take(num).ToList() ?? new List<LogRecordQueryItem>();
         }
 
         public LogRecordModels GetById(int id)
