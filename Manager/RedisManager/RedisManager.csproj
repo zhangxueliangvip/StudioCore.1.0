@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisManagerCore-Users.cs" />
+    <Compile Include="RedisManagerCore-Menu.cs" />
+    <Compile Include="RedisManagerCore-LogRecord.cs" />
+    <Compile Include="RedisManagerCore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
